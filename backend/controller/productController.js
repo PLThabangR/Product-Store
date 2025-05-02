@@ -1,3 +1,4 @@
+import mongoose from 'mongoose'
 import Product from '../model/Product.js'
 
 export const createProduct=async(req,res)=>{
@@ -93,6 +94,43 @@ export const getProductByID=async(req,res)=>{
     }catch(error){
         //show error for debugging purpose
         console.error("Error in deleting the product:",error.message)
+        //Return error to client
+        res.status(500).json({suceess:false,message:"Server error"})
+    }
+    
+}
+
+
+
+export const updateProductByID=async(req,res)=>{
+    //Get product using req.body
+    const {id}= req.params
+    const productInfo= req.body
+
+    console.log(id)
+  
+   
+
+    //check the database
+    try{
+        //Check if the id is valid
+        if(!mongoose.Types.ObjectId.isValid(id)){
+            return res.status(404).json({error:"Not a valid id"})
+        }
+
+        const product=await Product.findById(id)
+
+        if(product){
+            return res.status(404).json({error:"Product not found"})
+        }
+
+     const updatedProduct = await Product.findByIdAndUpdate(id,productInfo,{new:true})
+ 
+//return results to client if save was a success
+    res.status(200).json({suceess:true,data:updatedProduct})
+    }catch(error){
+        //show error for debugging purpose
+        console.error("Error in updating the product:",error.message)
         //Return error to client
         res.status(500).json({suceess:false,message:"Server error"})
     }
