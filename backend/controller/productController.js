@@ -36,6 +36,10 @@ export const deleteProduct=async(req,res)=>{
 
     //check the database
     try{
+          //Check if the id is valid
+          if(!mongoose.Types.ObjectId.isValid(id)){
+            return res.status(404).json({error:"Not a valid id"})
+        }
         const product=await Product.findById(id)
 
         if(!product){
@@ -57,8 +61,8 @@ export const deleteProduct=async(req,res)=>{
 
 
 export const getAllProducts=async(req,res)=>{
-    //check the database
     try{
+    
         
         //find all products user from database
        const  products =await Product.find({})
@@ -83,6 +87,10 @@ export const getProductByID=async(req,res)=>{
 
     //check the database
     try{
+          //Check if the id is valid
+          if(!mongoose.Types.ObjectId.isValid(id)){
+            return res.status(404).json({error:"Not a valid id"})
+        }
         const product=await Product.findById(id)
 
         if(!product){
@@ -120,7 +128,7 @@ export const updateProductByID=async(req,res)=>{
 
         const product=await Product.findById(id)
 
-        if(product){
+        if(!product){
             return res.status(404).json({error:"Product not found"})
         }
 
