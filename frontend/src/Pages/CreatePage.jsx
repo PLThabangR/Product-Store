@@ -24,13 +24,14 @@ const CreatePage = () => {
 
 
 <div className='card-body'>
+ 
 <form>
   <div class="mb-3">
     <label for="name" class="form-label">Name</label>
     <input type="text" class="form-control" id="name" value={newProduct.name} onChange={(e)=> setProduct({...newProduct,name:e.target.value})}/>
    
   </div>
-    {products}
+  
   <div class="mb-3">
     <label for="price" class="form-label">Price</label>
     <input type="number" class="form-control" id="name" value={newProduct.price} onChange={(e)=> setProduct({...newProduct,price:e.target.value})}/>
