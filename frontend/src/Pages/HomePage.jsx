@@ -3,6 +3,7 @@ import { useProductStore } from '../store/product'
 import { SimpleGrid, Text } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import ProductCard from '../Component/ProductCard'
+import { Spinner } from '@chakra-ui/react'
 
 const HomePage = () => {
   //use product store
@@ -31,8 +32,6 @@ const HomePage = () => {
     {products.map((product)=>(
     <ProductCard productKey={product._id} product={product}/>
     ))}
-      
-
       </SimpleGrid>
    {products.length===0 && (
     <>

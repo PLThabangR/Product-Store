@@ -17,7 +17,7 @@ function App() {
   return (
     <>
    <div className='container' >
-   <Box  bg="grey" m="5" maxH={"100%"}>
+   <Box  bgGradient={'linear(to-r, green.200, pink.300)'} m="5" minH={"100vh"}>
    
    <Navbar/>
 

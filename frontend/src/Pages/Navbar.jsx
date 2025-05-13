@@ -1,30 +1,36 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { Button, ButtonGroup,Text,Flex, Spacer,Box } from '@chakra-ui/react'
+
 
 const Navbar = () => {
   return (
     <>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid" style={{display:"flex"}}>
+    <Flex bg='gray.50'>
+  <Box p='4' >
    <Link to="/">
-   <span className="navbar-brand">Product Store</span>
+   <span className="navbar-brand">< Text as ={"h1"} fontSize={{base:"22",sm:"28"}}  fontWeight={"bold"} bgClip={"text"} textAlign={"center"} bgGradient='linear(to-r, green.300, pink.500)'  _hover={{
+    bgGradient: 'linear(to-r, red.500, yellow.500), textTransform={"uppercase"}'
+  }}> Product Store </Text></span>
    </Link>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav " >
-       <Link to="/create">
-       <span class="nav-link active" aria-current="page" >Create</span>
+  </Box>
+  <Spacer />
+  <Box p='4' >
+    <Link to="/create">
+       <span class="nav-link active" aria-current="page" > <Text fontSize={{base:"22",sm:"28"}}  fontWeight={"bold"} textAlign={"center"} colorScheme='teal' variant='solid'>Create</Text ></span>
        </Link>
-       
-      </div>
-    </div>
-  </div>
-</nav>
+  </Box>
+</Flex>
       
+
+     
+
+
+     
     </>
   )
 }
+
+
 
 export default Navbar
