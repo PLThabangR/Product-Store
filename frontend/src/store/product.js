@@ -36,7 +36,6 @@ getProducts:async()=>{
             headers:{"Content-Type":"application/json"}});
         //convert data to json
         const data= await res.json();
-       
         //We do not use ... becuase we are fetching already existing data unlike post we will be adding
         set({products:data.data})
     }catch(error){
