@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useProductStore } from '../store/product'
 import toast, { Toaster } from 'react-hot-toast';
-import { Text } from '@chakra-ui/react'
+import { Box, Text } from '@chakra-ui/react'
 
 
 
@@ -31,10 +31,10 @@ const CreatePage = () => {
       }//end funtion
 
   return (
-    <div className='container-sm' style={{maxWidth:"700px", }}>
+    <div  className='container-sm' style={{maxWidth:"700px", }}>
      <Text fontSize={'30'} fontWeight={"bold"}  textAlign={"center"}>Curent product</Text>
 
-<div className='card' style={{width:"100%"}}>
+<Box bg="bg" shadow="md" borderRadius="md" className='card' style={{width:"100%"}}>
 
 
 <div className='card-body'>
@@ -63,10 +63,10 @@ const CreatePage = () => {
 </form>
 
 </div>
-
+</Box>
 
     </div>
-        </div>
+        
        
     
   )

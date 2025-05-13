@@ -63,7 +63,31 @@ deleteProduct:async(id)=>{
             return {success:true,message:data.message}
 },
 
+updatedProductFunction:async (id,updatedProduct)=>{
+     try{
+             
+        //Set the target so that we prefix http//loclahost/5000
+        const res = await fetch(`/api/product/${id}`,{
+            method:"PUT",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify(updatedProduct)
+        },)
+        //Respond
+        const data = await res.json();
 
+        if(!data.success) return {success:false,message:data.message}
+        //console.log("Data after posting ",data.product)
+        //Use Zustand to set state
+         //We are updating our state
+         set((state)=>({
+            products:state.products.map((product)=>(product._id===id? data.data:product))
+         }))
+        return {success:true,message:data.message}
+        }catch(error){
+            
+              return {success:false,message:"Internal Server Error"}
+        }
+}
 }))
 
 //const [state,setState] = useState([])

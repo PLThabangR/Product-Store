@@ -1,10 +1,29 @@
-import React from 'react'
-import { Button, Box,Card,HStack, Image,useDisclosure, Text ,ModalCloseButton,ModalFooter ,Heading,ModalBody, Toast,Modal,ModalOverlay,ModalHeader,ModalContent} from "@chakra-ui/react"
-import { transform } from 'framer-motion'
+import React, { useState } from 'react'
 import { useProductStore } from '../store/product'
+import { Button, Box,Card,HStack, Image,useDisclosure, Text ,ModalCloseButton,ModalFooter ,Heading,ModalBody, Toast,Modal,ModalOverlay,ModalHeader,ModalContent} from "@chakra-ui/react"
+
 import toast, { Toaster } from 'react-hot-toast';
 const ProductCard = ({product}) => {
- const {deleteProduct} = useProductStore()
+     const {deleteProduct,updatedProductFunction} = useProductStore()
+    //Create state 
+    //Create a state and pass existing data to it so our form is filled
+    const [updateP,setP] =useState(product);
+  
+    //We are passing the id and the state
+   const  handleProduct =async(id,updateP)=>{
+  
+    //Succes and message come from the Product store 
+    const {success,message}= await updatedProductFunction(id,updateP)
+//Close the modal 
+onClose()
+    if(success){
+      toast.success(message)
+    }else{
+       toast.error(message)}
+      setP({name:"",price:"",image:""})
+
+      }//end funtion
+
  //modal state
  const { isOpen, onOpen, onClose } = useDisclosure()
  const handleDeleteProduct=async(id)=>{
@@ -17,8 +36,6 @@ const ProductCard = ({product}) => {
    
     }//end funtion
   
-
-
   return (
     <>
    <Box
@@ -45,7 +62,7 @@ const ProductCard = ({product}) => {
 
        </Text>
        <HStack alignItems={"center"}>
-         <Button variant='solid' onClick={""} onClick={onOpen} colorScheme='blue'>
+         <Button variant='solid' onClick={onOpen} colorScheme='blue'>
         Edit
       </Button>
 
@@ -65,14 +82,37 @@ const ProductCard = ({product}) => {
           <ModalHeader>Update Product</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-          
+         
+
+
+
+ 
+<form>
+  <div class="mb-3">
+    <label  class="form-label">Name</label>
+    <input type="text" class="form-control" id="name" value={updateP.name} onChange={(e)=> setP({...updateP,name:e.target.value})}/>
+   
+  </div>
+  
+  <div class="mb-3">
+    <label class="form-label">Price</label>
+    <input type="number" class="form-control" id="name" value={updateP.price} onChange={(e)=> setP({...updateP,price:e.target.value})}/>
+   
+  </div>
+
+  <div class="mb-3">
+    <label  class="form-label">Image</label>
+    <input type="text" class="form-control" id="image" value={updateP.image} onChange={(e)=> setP({...updateP,image:e.target.value})}/>
+   
+  </div>
+</form>
           </ModalBody>
 
           <ModalFooter>
             <Button colorScheme='blue' mr={3} onClick={onClose}>
               Close
             </Button>
-            <Button variant='ghost'>Secondary Action</Button>
+           <Button  colorScheme='blue' mr={3} onClick={()=>handleProduct(product._id,updateP)}>Update</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
