@@ -23,7 +23,6 @@ export const useProductStore=create((set)=>({
         set((state)=>({products:[...state.products,data.product] }))//We are updating our state
         return {success:true,message:"Product created"}
         }catch(error){
-            console.log("feed",error.message)
               return {success:false,message:"Internal Server Error"}
         }
         
@@ -37,11 +36,9 @@ getProducts:async()=>{
             headers:{"Content-Type":"application/json"}});
         //convert data to json
         const data= await res.json();
-       console.log(data.data)
+       
         //We do not use ... becuase we are fetching already existing data unlike post we will be adding
         set({products:data.data})
-
-
     }catch(error){
           return {success:false,message:"Internal Server Error"}
     }
@@ -74,7 +71,6 @@ updatedProductFunction:async (id,updatedProduct)=>{
         },)
         //Respond
         const data = await res.json();
-
         if(!data.success) return {success:false,message:data.message}
         //console.log("Data after posting ",data.product)
         //Use Zustand to set state
@@ -83,8 +79,7 @@ updatedProductFunction:async (id,updatedProduct)=>{
             products:state.products.map((product)=>(product._id===id? data.data:product))
          }))
         return {success:true,message:data.message}
-        }catch(error){
-            
+        }catch(error){ 
               return {success:false,message:"Internal Server Error"}
         }
 }

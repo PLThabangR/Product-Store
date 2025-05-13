@@ -16,12 +16,10 @@ const HomePage = () => {
 
     getProducts()
   },[getProducts])
-
-  console.log(products)
   return (
     <>
        <div className='container-sm' style={{maxWidth:"700px", }}>
-        <Text fontSize={'30'} fontWeight={"bold"}  textAlign={"center"}>Curent product</Text>
+        <Text fontSize={'30'} fontWeight={"bold"}  textAlign={"center"}>Available product</Text>
       <SimpleGrid columns={{
         base:1,md:2,lg:3
       }}
