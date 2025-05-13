@@ -6,8 +6,8 @@ const Navbar = () => {
     <>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid" style={{display:"flex"}}>
-   <Link to="/home">
-   <a class="navbar-brand">Product Store</a>
+   <Link to="/">
+   <span className="navbar-brand">Product Store</span>
    </Link>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -15,7 +15,7 @@ const Navbar = () => {
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav " >
        <Link to="/create">
-       <a class="nav-link active" aria-current="page" >Create</a>
+       <span class="nav-link active" aria-current="page" >Create</span>
        </Link>
        
       </div>
