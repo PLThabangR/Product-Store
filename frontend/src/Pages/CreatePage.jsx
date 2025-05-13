@@ -34,7 +34,7 @@ const CreatePage = () => {
     <div className='container-sm' style={{maxWidth:"700px", }}>
      <Text fontSize={'30'} fontWeight={"bold"}  textAlign={"center"}>Curent product</Text>
 
-<div className='card' style={{width:"100%"}}></div>
+<div className='card' style={{width:"100%"}}>
 
 
 <div className='card-body'>
@@ -66,7 +66,7 @@ const CreatePage = () => {
 
 
     </div>
-        
+        </div>
        
     
   )

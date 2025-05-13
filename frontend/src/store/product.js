@@ -47,21 +47,22 @@ getProducts:async()=>{
     }
 },//end of function
 deleteProduct:async(id)=>{
-    //Delete product
+    //Delete product by id
         const res = await fetch(`/api/product/${id}`,{
             method:"DELETE",
             headers:{"Content-Type":"application/json"}});
-
+            //convert returned data to json
             const data = await res.json()
-
+            //Check if the delete was a success or not
             if(!data.success) return {success:false,message:data.message}
             //update the state
             //use filter to create new array
-            //Update the ui immediately
-            set(state=>({products:state.products.filter((product)=>product._id!==id)}))
-
+            //Update the ui immediately without need refresh
+           set(state=>({products:state.products.filter((product)=>product._id!==id)}))
+                console.log(data.message)
             return {success:true,message:data.message}
-}
+},
+
 
 }))
 

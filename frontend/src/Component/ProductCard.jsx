@@ -1,11 +1,12 @@
 import React from 'react'
-import { Button, Box,Card,HStack, Image, Text ,CardBody,Stack ,Heading, IconButton, Toast} from "@chakra-ui/react"
+import { Button, Box,Card,HStack, Image,useDisclosure, Text ,ModalCloseButton,ModalFooter ,Heading,ModalBody, Toast,Modal,ModalOverlay,ModalHeader,ModalContent} from "@chakra-ui/react"
 import { transform } from 'framer-motion'
 import { useProductStore } from '../store/product'
 import toast, { Toaster } from 'react-hot-toast';
 const ProductCard = ({product}) => {
  const {deleteProduct} = useProductStore()
- 
+ //modal state
+ const { isOpen, onOpen, onClose } = useDisclosure()
  const handleDeleteProduct=async(id)=>{
 
     const {success,message}= await deleteProduct(id)
@@ -44,7 +45,7 @@ const ProductCard = ({product}) => {
 
        </Text>
        <HStack alignItems={"center"}>
-         <Button variant='solid' onClick={""} colorScheme='blue'>
+         <Button variant='solid' onClick={""} onClick={onOpen} colorScheme='blue'>
         Edit
       </Button>
 
@@ -57,6 +58,25 @@ const ProductCard = ({product}) => {
     </Box>
    </Box>
     
+    <>
+    <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Update Product</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+          
+          </ModalBody>
+
+          <ModalFooter>
+            <Button colorScheme='blue' mr={3} onClick={onClose}>
+              Close
+            </Button>
+            <Button variant='ghost'>Secondary Action</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    </>
     
     </>
   )
