@@ -14,7 +14,9 @@ dotenv.config()
 const app = express()
 //Allow us to work with json data
 app.use(express.json())
-app.use(cors());
+app.use(cors({
+    origin:"*"
+}));
 
 app.use("/api/product",productRouter)
 
