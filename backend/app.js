@@ -15,7 +15,7 @@ const app = express()
 //Allow us to work with json data
 app.use(express.json())
 app.use(cors({
-    origin:"*"
+    origin:"https://product-store-lac.vercel.app/"
 }));
 
 app.use("/api/product",productRouter)
