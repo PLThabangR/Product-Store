@@ -15,7 +15,7 @@ const app = express()
 //Allow us to work with json data
 app.use(express.json())
 app.use(cors({
-    origin:"https://product-store-lac.vercel.app/"
+    origin: "*"
 }));
 
 app.use("/api/product",productRouter)
@@ -36,11 +36,12 @@ const port = process.env.PORT || 3000
 // }
 
 // //Allow requests
-// app.use(function(req, res, next) {
-//     res.header("Access-Control-Allow-Origin", "https://product-store-1-o1ge.onrender.com"); // update to match the domain you will make the request from
-//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//     next();
-//   });
+app.use(function(req, res, next) {
+     res.header("Access-Control-Allow-Origin", "https://product-store-lac.vercel.app/"); 
+      res.header(`Access-Control-Allow-Methods`, `GET,PUT,POST,DELETE`);// update to match the domain you will make the request from
+     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+   });
 
 
 app.listen(port,()=>{
