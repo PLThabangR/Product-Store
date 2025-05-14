@@ -7,8 +7,6 @@ import { Spinner } from '@chakra-ui/react'
 
 const HomePage = () => {
   //use product store
-
-  
   const {getProducts,products} = useProductStore()
 
   //load function using use effect

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useProductStore } from '../store/product'
-import { Button, Box,Card,HStack, Image,useDisclosure, Text ,ModalCloseButton,ModalFooter ,Heading,ModalBody, Toast,Modal,ModalOverlay,ModalHeader,ModalContent} from "@chakra-ui/react"
+import { Button, Box,HStack, Image,useDisclosure, Text ,ModalCloseButton,ModalFooter ,Heading,ModalBody, Toast,Modal,ModalOverlay,ModalHeader,ModalContent} from "@chakra-ui/react"
 
 import toast, { Toaster } from 'react-hot-toast';
 const ProductCard = ({product}) => {

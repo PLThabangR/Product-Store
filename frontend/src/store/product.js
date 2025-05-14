@@ -84,4 +84,3 @@ updatedProductFunction:async (id,updatedProduct)=>{
 }
 }))
 
-//const [state,setState] = useState([])
