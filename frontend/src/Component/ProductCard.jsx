@@ -58,7 +58,7 @@ onClose()
        {product.name}
        </Heading>
 
-       <Text  as ="h4" fontWeight="bold"  fontSize={"x1"} mb="4">
+       <Text  fontWeight="bold"  fontSize={"x1"} mb="4">
  {product.price}
        </Text>
        <HStack alignItems={"center"}>
