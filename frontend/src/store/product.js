@@ -31,7 +31,7 @@ getProducts:async()=>{
 
     try{
         //Fetch data
-        const res = await fetch("/api/product",{
+        const res = await fetch("https://product-store-1-o1ge.onrender.com/api/product",{
             method:"GET",
             headers:{"Content-Type":"application/json"}});
         //convert data to json
