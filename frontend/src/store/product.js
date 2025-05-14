@@ -11,7 +11,7 @@ export const useProductStore=create((set)=>({
             return {success:false,message:"Please fill in all fields. "}
         }
         //Set the target so that we prefix http//loclahost/5000
-        const res = await fetch("/api/product",{
+        const res = await fetch("https://product-store-1-o1ge.onrender.com/api/product",{
             method:"POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(newProduct)
@@ -44,7 +44,7 @@ getProducts:async()=>{
 },//end of function
 deleteProduct:async(id)=>{
     //Delete product by id
-        const res = await fetch(`/api/product/${id}`,{
+        const res = await fetch(`https://product-store-1-o1ge.onrender.com/api/product/${id}`,{
             method:"DELETE",
             headers:{"Content-Type":"application/json"}});
             //convert returned data to json
@@ -63,7 +63,7 @@ updatedProductFunction:async (id,updatedProduct)=>{
      try{
              
         //Set the target so that we prefix http//loclahost/5000
-        const res = await fetch(`/api/product/${id}`,{
+        const res = await fetch(`https://product-store-1-o1ge.onrender.com/api/product/${id}`,{
             method:"PUT",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify(updatedProduct)
