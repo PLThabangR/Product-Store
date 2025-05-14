@@ -58,8 +58,8 @@ onClose()
        {product.name}
        </Heading>
 
-       <Text fontWeight="bold"  fontSize={"x1"} mb="4">
-
+       <Text  as ="h4" fontWeight="bold"  fontSize={"x1"} mb="4">
+ {product.price}
        </Text>
        <HStack alignItems={"center"}>
          <Button variant='solid' onClick={onOpen} colorScheme='blue'>
